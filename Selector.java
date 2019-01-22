@@ -4,9 +4,9 @@ import java.util.Arrays;
 * Defines a library of selection methods
 * on arrays of ints.
 *
-* @author   YOUR NAME (YOU@auburn.edu)
+* @author   John Guess (YOU@auburn.edu)
 * @author   Dean Hendrix (dh@auburn.edu)
-* @version  TODAY
+* @version  1/22/19
 *
 */
 public final class Selector {
@@ -26,8 +26,21 @@ public final class Selector {
     * length. The array a is not changed by this method.
     */
    public static int min(int[] a) {
-      return -99;
+      if (a != null & a.length > 0) {
+         int min = a[0];
+         for (int i = 0; i < a.length - 1; i++) {
+            if (a[i + 1] < min) {
+               min = a[i + 1];
+            }
+         }
+         return min;
+      }
+      
+      else {
+         throw new IllegalArgumentException("The argument cannot be null or of zero length");
+      }
    }
+   
 
 
    /**
@@ -35,8 +48,20 @@ public final class Selector {
     * throws IllegalArgumentException if a is null or has zero
     * length. The array a is not changed by this method.
     */
-   public static int max(int[] a) {
-      return -99;
+   public static int max(int[] a) throws IllegalArgumentException {
+      if (a != null & a.length > 0) {
+         int max = a[0];
+         for (int i = 0; i < a.length - 1; i++) {
+            if (a[i + 1] > max) {
+               max = a[i + 1];
+            }
+         }
+         return max;
+      }
+      
+      else {
+         throw new IllegalArgumentException("The argument cannot be null or of zero length");
+      }
    }
 
 
@@ -104,6 +129,11 @@ public final class Selector {
     */
    public static int floor(int[] a, int key) {
       return -99;
+   }
+   
+   public static void main(String[] args) {
+      int[] a = {3, 5, 89, 1000, 3, 4, 1};
+      int max = max(a);
    }
 
 }
